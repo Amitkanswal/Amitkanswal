@@ -63,6 +63,16 @@ Currently at **Contentstack**, I’ve been deeply involved in shaping the **Deve
 - 🥇 **Runner-up in Contentstack Hackathon** — solution later shipped as a product feature.
 - ⭐ **4+ Above & Beyond Awards** for consistently pushing platform impact.
 
+### 📈 Contribution Activity
+
+<div align="center">
+
+![GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=Amitkanswal&theme=tokyo-night&hide_border=true&area=true)
+
+![Pull Requests](https://github-readme-stats.vercel.app/api?username=Amitkanswal&show_icons=true&theme=tokyonight&hide_border=true&custom_title=Pull%20Requests%20%26%20Reviews&hide=stars,issues&show=prs_merged&count_private=true)
+
+</div>
+
 ---
 
 ## 🎓 Education
