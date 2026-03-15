@@ -10,7 +10,6 @@ I’m a **Senior Software Engineer** with **5+ years of experience** building **
 
 Currently at **Contentstack**, I’ve been deeply involved in shaping the **Developer Hub & Marketplace ecosystem** — from early architecture to GA. I specialize in simplifying complex systems, improving **Developer Experience (DX)**, and shipping tooling that teams actually rely on in production.
 
-- 🧱 Founding member of **Developer Hub & Marketplace MFE**
 - ⚙️ Strong focus on **SDK design**, **micro-frontend architecture**, and **performance**
 - 🚀 Experience owning **cross-team releases** and high-impact customer escalations
 - 🧠 Actively strengthening **backend & system design** skills
