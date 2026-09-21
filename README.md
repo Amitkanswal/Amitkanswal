@@ -1,94 +1,134 @@
-# Hi there, I'm Amit Kanswal 👋
+# Portfolio — IDE shell
 
-### Senior Software Engineer — Developer Platforms & DevX
+An editor-metaphor portfolio: the file tree is the navigation, each "file" is a
+content category, and the terminal footer is the ten-second version for someone
+who reads nothing else.
 
----
+React 19 · Vite 7 · TypeScript · Tailwind 4.
 
-## 🚀 About Me
-
-I'm a **Senior Software Engineer** at [Contentstack](https://www.contentstack.com) with **6+ years**
-building **developer platforms**, **SDKs**, **micro-frontends** and **marketplace integrations** at scale.
-
-- 🏗️ **Founding member** of the Developer Hub & Marketplace micro-frontend rebuild — a platform serving **100,000+ daily active users**
-- ⚡ Cut application startup from **13s → 150ms** through shared dependency resolution and host initialization, not code splitting alone
-- 🧰 Owned the **App SDK** — the integration contract every third-party app on the platform is built against
-- 🌐 Maintained **14 reference starter websites** across React, Next.js, Angular, Vue, Nuxt, Astro, SvelteKit and Gatsby — one accepted into a major framework vendor's **official examples collection**
-- 🔐 Designed a **secure API proxy** so marketplace apps reach third-party APIs without credentials ever touching the browser
-- 🧪 Built **end-to-end testing for sandboxed iframe apps** from scratch — no existing pattern for it
-- 🛰️ Led the ecosystem rollout across **5 regions and 3 cloud providers**
-- 👨‍🏫 Mentor and code reviewer — **891 pull requests reviewed**
-- 🔗 Portfolio: **[amitkanswal.github.io](https://amitkanswal.github.io)**
+```bash
+npm install
+npm run dev        # http://localhost:5173
+npm run typecheck
+npm run build      # -> dist/
+```
 
 ---
 
-## 🧠 Tech Stack & Expertise
+## The one thing to understand
 
-### Frontend
-![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=000)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
-![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white)
-![Nuxt](https://img.shields.io/badge/Nuxt-00DC82?style=for-the-badge&logo=nuxtdotjs&logoColor=white)
-![Astro](https://img.shields.io/badge/Astro-BC52EE?style=for-the-badge&logo=astro&logoColor=white)
-![SvelteKit](https://img.shields.io/badge/SvelteKit-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)
-![Gatsby](https://img.shields.io/badge/Gatsby-663399?style=for-the-badge&logo=gatsby&logoColor=white)
+**There are two file trees in this project and they are not the same tree.**
 
-### Backend & Architecture
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
-![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
-![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
-![GraphQL](https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white)
-![OAuth 2.0](https://img.shields.io/badge/OAuth_2.0-EB5424?style=for-the-badge&logo=auth0&logoColor=white)
-![Module Federation](https://img.shields.io/badge/Module_Federation-FF6F00?style=for-the-badge&logo=webpack&logoColor=white)
+| | Where | What it is |
+|---|---|---|
+| Real | the repo you are reading | actual source on disk |
+| Virtual | `src/lib/vfs.ts` | the site's navigation — content categories rendered as files |
 
-### Testing & DevOps
-![Playwright](https://img.shields.io/badge/Playwright-45BA4B?style=for-the-badge&logo=playwright&logoColor=white)
-![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+Changing the site's navigation means editing `src/lib/vfs.ts`, not moving files
+around on disk.
 
 ---
 
-## 🏆 Highlights & Achievements
+## Where to put your content
 
-- 🏗️ **Founding member of the Developer Hub & Marketplace MFE initiative** — carried it from early architecture through general availability, with independent deployments per surface and a separate release track so the migration never blocked delivery
-- 🧰 **Owned the App SDK end to end** — design, implementation, documentation, releases and developer support, adding capability across four escalating phases without breaking a single existing integration
-- 🔌 **Built a general-purpose API method** letting sandboxed apps reach the platform's full management API, replacing a narrow fixed allow-list
-- 📋 **Turned an app requirement into a platform capability** — an editorial workflow board needed advanced content search that didn't exist, so I added it to the SDK and other teams adopted it
-- 🛡️ **Secure API proxy** handling **10,000+ calls per day** with validation and transformation
-- 🌍 **5 regions across 3 cloud providers**, converting 35+ components from hardcoded endpoints to regional resolution
-- 📦 **~25 formal production releases**, one bundling 12 interdependent components at distinct versions
-- 🐞 **563 bugs owned and fixed**, many surfaced by testing infrastructure I built
-- 🥇 **Runner-up, Contentstack Hackathon** — prototype later shipped as a product feature
-- ⭐ **Above & Beyond Award ×4** for consistent platform impact
+Everything you say about yourself lives in `src/content/`. Nothing in
+`src/components/` hardcodes a fact about you — you should be able to replace
+`src/content/` wholesale and still have a working site.
 
----
+| File | Holds | Appears as |
+|---|---|---|
+| `profile.ts` | name, title, availability, positioning claim | `src/README.md` header |
+| `narrative.ts` | the engineering narrative, "now investigating" | `src/README.md` body |
+| `projects.ts` | case studies — metrics, trade-offs, incidents | `src/projects.tsx` |
+| `principles.ts` | decision heuristics, wired to project ids | `src/architecture.rs` |
+| `career.ts` | roles, promotions, education, awards | `src/career.json` |
+| `skills.ts` | capability groups | `src/skills.toml` |
+| `telemetry.ts` | the always-visible numbers panel | sidebar, always visible |
+| `contact.ts` | how to reach you | `contact.sh` |
+| `docs.ts` | RFCs, post-mortems, ways-of-working | `docs/*`, `.github/workflows/ci.yml` |
+| `quickFacts.ts` | the terminal JSON dump | terminal footer |
 
-## 🤝 Let's Connect & Collaborate
+Search the repo for `TODO` — every placeholder is marked.
 
-Happy to talk about **developer platforms**, **SDK design** and **micro-frontend architecture**:
+### Adding a new category
 
-- 🧱 **SDK & Platform Architecture** — stable contracts other teams build on
-- ⚛️ **Micro-Frontends** — Module Federation, independent deployment, migration strategy
-- 🧪 **Test Automation** — Playwright, sandboxed environments, release gating
-- 🧩 **Developer Experience** — internal tooling, documentation, self-service setup
-- 🌐 **Multi-region Platforms** — data residency, regional rollout, release coordination
-
----
-
-### 📫 Get in Touch
-
-[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=github&logoColor=white)](https://amitkanswal.github.io)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/amit-kanswal-447558147)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Amitkanswal)
-[![Email](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:amitkanswal7@gmail.com)
+1. Add an entry to `VFS` in `src/lib/vfs.ts`.
+2. Make sure its `kind` maps to a pane in `src/components/panes/index.ts`.
+3. Add the content module. That's it — the tree, tabs, palette and outline all
+   pick it up automatically.
 
 ---
 
-<div align="center">
+## Two fields you should not delete
 
-**Open to senior platform engineering and developer-experience roles.**
+`Metric.source` and `Telemetry.sourcedFrom` exist to keep the site honest. Both
+are rendered in the UI.
 
-</div>
+The rule they enforce: **if you cannot say how a number was measured, the number
+does not go on the page.** An unverifiable figure costs far more in an interview
+than a missing one, and this is the single most common way portfolios lose
+credibility.
+
+The same applies to `Principle.appliedIn` — a principle with no project behind it
+reads as a platitude. Wired to a case study, it reads as a track record.
+
+---
+
+## Before you launch
+
+### Pre-rendering — do not skip this
+
+This is a client-rendered app, so crawlers and link-preview bots currently see an
+empty page. **Your site will not rank for your name until this is fixed.**
+
+Add a pre-render step that walks `VFS` and emits static HTML per route —
+`vite-plugin-ssg`, `react-dom/server` in a small build script, or move to Astro.
+Until then, the fallback content in `index.html` is all a bot sees.
+
+### Checklist
+
+- [ ] Replace every `TODO` in `src/content/` and `index.html`
+- [ ] Drop your real `resume.pdf` into `public/` (delete the placeholder)
+- [ ] Add `public/og-image.png` at 1200×630
+- [ ] Add `public/avatar.webp`
+- [ ] Set `base` in `vite.config.ts` — `'/'` for a user site, `'/<repo>/'` for a project site
+- [ ] Set the canonical URL, OG URLs and JSON-LD `sameAs` links in `index.html`
+- [ ] Add `public/sitemap.xml` and update `robots.txt`
+- [ ] Wire analytics in `src/lib/analytics.ts` (Plausible / Umami / GoatCounter)
+- [ ] Pre-render (above)
+- [ ] Run axe DevTools and fix anything it flags
+- [ ] Test at 375px, 768px and 1440px
+- [ ] Custom domain — `yourname.dev` beats a `github.io` subdomain on every signal
+
+---
+
+## Design constraints already handled
+
+Worth knowing so you don't undo them:
+
+- **Colours are validated, not chosen by eye.** The four series colours are
+  adjacent-pair CVD-separated (ΔE 8.4) and all clear 3:1 against the surface. If
+  you change them, re-validate rather than eyeballing.
+- **Identity is never colour alone.** Every meter slice is direct-labelled; every
+  status callout pairs its colour with an icon and a word.
+- **The file tree has real tree semantics** — `role="tree"`, `role="treeitem"`,
+  arrow-key navigation. A fake file tree a screen reader cannot parse is worse
+  than a plain list.
+- **Dark mode is a selected theme**, not an inverted light one, and is applied
+  before first paint so there is no flash.
+- **Progressive disclosure via native `<details>`** — works without JS, keyboard
+  accessible for free.
+- **Mobile has a real fallback.** The IDE metaphor has no phone equivalent, so
+  below `md` the sidebar becomes a drawer. A large share of recruiter traffic is
+  phone-first.
+- **`prefers-reduced-motion` is respected**, including the terminal caret.
+
+## Keyboard
+
+| Key | Does |
+|---|---|
+| `⌘K` / `Ctrl+K` | command palette |
+| `⌘P` / `Ctrl+P` | same |
+| `⌘B` / `Ctrl+B` | toggle explorer |
+| `↑` `↓` | move within the file tree |
+| `Esc` | close the palette |

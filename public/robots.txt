@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amitkanswal.github.io/sitemap.xml

@@ -1,0 +1,166 @@
+@import 'tailwindcss';
+
+/* --------------------------------------------------------------------------
+   Editor theme tokens.
+
+   Dark is the default and is a *selected* theme, not an inverted light one.
+   The four series colours are the validated categorical slots 1–4 (adjacent-pair
+   CVD ΔE 8.4, normal-vision ΔE 19.8, all ≥3:1 on the surface). If you change
+   them, re-validate — do not eyeball it.
+   -------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: dark;
+
+  --bg-deep: #0b0d12;
+  --bg-surface: #11141b;
+  --bg-panel: #151923;
+  --bg-raised: #1b2029;
+  --bg-hover: #212734;
+
+  --border: #232a38;
+  --border-strong: #303949;
+
+  --text-primary: #e6e9f0;
+  --text-secondary: #9aa4b8;
+  --text-muted: #6b7484;
+
+  --accent: #3987e5;
+  --accent-soft: #3987e51f;
+
+  --good: #199e70;
+  --warn: #c98500;
+  --danger: #e66767;
+
+  /* categorical series — validated set */
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+
+  /* file-type accents in the tree */
+  --f-md: #9aa4b8;
+  --f-tsx: #3987e5;
+  --f-rs: #d95926;
+  --f-json: #c98500;
+  --f-toml: #199e70;
+  --f-sh: #86b6ef;
+  --f-yml: #9085e9;
+  --f-pdf: #e66767;
+
+  --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg-deep: #f2f3f5;
+  --bg-surface: #ffffff;
+  --bg-panel: #f7f8fa;
+  --bg-raised: #eef0f4;
+  --bg-hover: #e4e7ed;
+
+  --border: #dfe3ea;
+  --border-strong: #c6ccd8;
+
+  --text-primary: #12151c;
+  --text-secondary: #4d5666;
+  --text-muted: #79818f;
+
+  --accent: #2a78d6;
+  --accent-soft: #2a78d614;
+
+  --good: #1baf7a;
+  --warn: #eda100;
+  --danger: #e34948;
+
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+
+  --f-md: #4d5666;
+  --f-tsx: #2a78d6;
+  --f-rs: #eb6834;
+  --f-json: #eda100;
+  --f-toml: #1baf7a;
+  --f-sh: #256abf;
+  --f-yml: #4a3aa7;
+  --f-pdf: #e34948;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+/* Scrollbars that match the editor rather than the OS */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 6px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+.skip-link:focus {
+  left: 8px;
+  top: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.caret {
+  animation: blink 1.1s step-end infinite;
+}
