@@ -10,9 +10,11 @@ permissions:
   pages: write
   id-token: write
 
+# Never let two Pages deployments race. Don't cancel an in-flight deploy:
+# a half-applied deployment is worse than a slightly stale one.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -25,7 +27,15 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+
+      # NOTE: enablement only CREATES a Pages site when none exists. It does
+      # not convert an existing site, so it cannot move this repo off its
+      # legacy branch build -- that is a one-time repo setting an admin must
+      # flip to "GitHub Actions" before deploy-pages below can succeed.
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

@@ -1,9 +1,9 @@
 name: quality
 
+# Only on PRs. Pushes to main are already typechecked and built by the
+# deploy workflow, so running this there would build the same commit twice.
 on:
   pull_request:
-  push:
-    branches: [main]
 
 jobs:
   checks:
