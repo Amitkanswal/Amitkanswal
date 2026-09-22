@@ -48,14 +48,6 @@ export const VFS: VFSFile[] = [
     summary: 'Production systems, with metrics, trade-offs and incidents',
   },
   {
-    path: 'src/architecture.rs',
-    dir: 'src',
-    name: 'architecture.rs',
-    kind: 'rs',
-    category: 'How I think',
-    summary: 'Decision heuristics, each wired to the project that proves it',
-  },
-  {
     path: 'src/career.json',
     dir: 'src',
     name: 'career.json',

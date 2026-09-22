@@ -2,7 +2,6 @@ import type { ComponentType } from 'react'
 import type { FileKind, VFSFile } from '@/lib/vfs'
 import { MarkdownPane } from './MarkdownPane'
 import { ProjectsPane } from './ProjectsPane'
-import { PrinciplesPane } from './PrinciplesPane'
 import { JsonPane } from './JsonPane'
 import { TomlPane } from './TomlPane'
 import { ShellPane } from './ShellPane'
@@ -17,7 +16,6 @@ export const PANES: Partial<Record<FileKind, PaneComponent>> = {
   md: MarkdownPane,
   yml: MarkdownPane,
   tsx: ProjectsPane,
-  rs: PrinciplesPane,
   json: JsonPane,
   toml: TomlPane,
   sh: ShellPane,
