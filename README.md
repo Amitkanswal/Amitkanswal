@@ -40,7 +40,6 @@ Everything you say about yourself lives in `src/content/`. Nothing in
 | `profile.ts` | name, title, availability, positioning claim | `src/README.md` header |
 | `narrative.ts` | the engineering narrative, "now investigating" | `src/README.md` body |
 | `projects.ts` | case studies — metrics, trade-offs, incidents | `src/projects.tsx` |
-| `principles.ts` | decision heuristics, wired to project ids | `src/architecture.rs` |
 | `career.ts` | roles, promotions, education, awards | `src/career.json` |
 | `skills.ts` | capability groups | `src/skills.toml` |
 | `telemetry.ts` | the always-visible numbers panel | sidebar, always visible |
